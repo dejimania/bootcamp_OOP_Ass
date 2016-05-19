@@ -64,7 +64,7 @@ function NotesApplication(author){
 		this.delete = function(note_id){
 			if(!(isNaN(note_id))){
 				this.note.splice(note_id, 1);
-				console.log( 'Note ID: ' + note_id + '\t' + ' deleted Successfully!');
+				return 'Note ID: ' + note_id + '\t' + ' deleted Successfully!';
 			}else{
 				return 'Please provide a valid Note ID';
 			}

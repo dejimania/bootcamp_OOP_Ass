@@ -1,10 +1,4 @@
-/*describe("NotesApplication",function(){
- 	it("should return 'invalid author' for an empty author", function(){
-		newNote = new NotesApplication("");
- 		console.log( newNote);
- 		expect(newNote).toEqual({  });
- 	});
- });*/
+//some test cases for NotesApplication.js
  'use strict';
  
 var noteApp;
@@ -44,8 +38,29 @@ describe("NotesApplication create function", function(){
 		expect(noteApp.create('')).toEqual('note content can not be empty!');
 	});
 
-	it('returns note created after creating note', function(){
-		expect(noteApp.create('some note')).toEqual('New Note Content created Successfully');
+	it('assign last item in the note array to note content', function(){
+		noteApp.create('Second Note');
+		expect(noteApp.note[noteApp.note.length - 1]).toEqual('Second Note');
+	});
+
+});
+
+
+// test for delete method 
+
+describe("NotesApplication create function", function(){
+
+	beforeEach(function() {
+		 noteApp = new NotesApplication('Kamil');
+		 noteApp.delete('note id');
+	});
+
+	it('First note successfully created as first index', function(){
+		expect(noteApp.[0]).toEqual('First Note');
+	});
+
+	it('does not allows empty note to be created', function(){
+		expect(noteApp.delete('')).toEqual('note content can not be empty!');
 	});
 
 	it('assign last item in the note array to note content', function(){

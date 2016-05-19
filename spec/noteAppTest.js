@@ -1,10 +1,6 @@
-/*describe("NotesApplication",function(){
- 	it("should return 'invalid author' for an empty author", function(){
-		newNote = new NotesApplication("");
- 		console.log( newNote);
- 		expect(newNote).toEqual({  });
- 	});
- });*/
+/*
+ Test case for the noteApplication class
+ */
  'use strict';
  
 var noteApp;
@@ -27,9 +23,9 @@ describe("NotesApplication", function(){
 	
 });
 
-// test for create method 
+// test cases for create method 
 
-describe("NotesApplication create function", function(){
+describe("NotesApplication create method", function(){
 
 	beforeEach(function() {
 		 noteApp = new NotesApplication('Kamil');
@@ -44,13 +40,44 @@ describe("NotesApplication create function", function(){
 		expect(noteApp.create('')).toEqual('note content can not be empty!');
 	});
 
-	it('returns note created after creating note', function(){
-		expect(noteApp.create('some note')).toEqual('New Note Content created Successfully');
-	});
-
 	it('assign last item in the note array to note content', function(){
 		noteApp.create('Second Note');
 		expect(noteApp.note[noteApp.note.length - 1]).toEqual('Second Note');
+	});
+
+});
+
+// some test cases for delete method
+
+
+describe("NotesApplication delete method", function(){
+
+	beforeEach(function() {
+		 noteApp = new NotesApplication('Kamil');
+		 noteApp.delete('note id');
+	});
+
+	it('does not allows empty note_id', function(){
+		expect(noteApp.delete('undefined')).toEqual('Please provide a valid Note ID');
+	});
+
+});
+
+// test cases for edit method 
+
+describe("NotesApplication edit method", function(){
+
+	beforeEach(function() {
+		 noteApp = new NotesApplication('Kamil');
+		 noteApp.edit('note id');
+	});
+	
+	it('does not allows note_id to be empty', function(){
+		expect(noteApp.edit('Please provide a valid Note ID')).toEqual('Invalid Note ID');
+	});
+	
+	it('Edit content cannot be empty', function(){
+		expect(noteApp.edit('')).toEqual('Please add some notes!');
 	});
 
 });
